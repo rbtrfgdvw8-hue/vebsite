@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bête du Gévaudan — Нишевая одежда</title>
+
+  <style>
+    :root {
+      --background: #eae9e4;
+      --surface: #f5f4ef;
+      --text: #181917;
+      --muted: #737870;
+      --line: #c9c9c1;
+      --accent: #26382e;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(234, 233, 228, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo-text {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      letter-spacing: -0.7px;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+    }
+
+    .nav a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bag-button,
+    .menu-button {
+      border: 1px solid var(--text);
+      background: transparent;
+      color: var(--text);
+      padding: 10px 14px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: none;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .mobile-nav.active {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 9px 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* BRAND LOGO */
+
+    .brand-logo {
+      padding: 30px 0 25px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .brand-logo img {
+      display: block;
+      width: min(390px, 80%);
+      max-height: 190px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      padding: 100px 0;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: normal;
+    }
+
+    h1 {
+      font-size: clamp(58px, 9vw, 126px);
+      line-height: 0.92;
+      letter-spacing: -6px;
+      max-width: 850px;
+    }
+
+    .hero-description {
+      max-width: 440px;
+      margin-top: 42px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .hero-link {
+      display: inline-flex;
+      margin-top: 34px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--text);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    /* TICKER */
+
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ticker-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 35px;
+      padding: 16px 0;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 30px;
+      margin-bottom: 55px;
+    }
+
+    .section-number {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(42px, 6vw, 78px);
+      line-height: 0.95;
+      letter-spacing: -3px;
+    }
+
+    .section-intro {
+      max-width: 310px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PRODUCTS */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 45px 25px;
+    }
+
+    .product {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+
+    .product-visual {
+      height: 330px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-visual::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 220px;
+      background: var(--accent);
+      clip-path: polygon(
+        25% 0,
+        75% 0,
+        100% 18%,
+        85% 100%,
+        15% 100%,
+        0 18%
+      );
+    }
+
+    .product-visual::after {
+      content: "BÊTE";
+      position: absolute;
+      color: var(--background);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .product-name {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 24px;
+    }
+
+    .product-description {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .product-price {
+      white-space: nowrap;
+    }
+
+    .product-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .size-select {
+      flex: 1;
+      min-width: 0;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      padding: 12px;
+      font-size: 12px;
+    }
+
+    .add-button {
+      background: var(--accent);
+      color: var(--white);
+      border: 1px solid var(--accent);
+      padding: 12px 18px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.2s ease;
+    }
+
+    .add-button:hover {
+      background: #18271f;
+    }
+
+    /* HISTORY */
+
+    .history-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .history-text {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 3vw, 43px);
+      line-height: 1.08;
+      letter-spacing: -1px;
+    }
+
+    .history-description {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 390px;
+    }
+
+    /* INFORMATION */
+
+    .information-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .information-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .information-button {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      padding: 23px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .information-button span:last-child {
+      font-size: 20px;
+      color: var(--muted);
+    }
+
+    .information-content {
+      display: none;
+      max-width: 650px;
+      padding: 0 0 25px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .information-item.active .information-content {
+      display: block;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* CART */
+
+    .cart-panel {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(24, 25, 23, 0.35);
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .cart-panel.active {
+      display: flex;
+    }
+
+    .cart {
+      width: min(470px, 100%);
+      height: 100%;
+      background: var(--background);
+      padding: 35px;
+      overflow-y: auto;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 35px;
+    }
+
+    .close-cart {
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 25px;
+    }
+
+    .cart-items {
+      padding: 25px 0;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid var(--line);
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: 13px;
+    }
+
+    .cart-item small {
+      display: block;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .remove-item {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      text-decoration: underline;
+      font-size: 11px;
+      margin-top: 8px;
+    }
+
+    .cart-empty {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cart-footer {
+      border-top: 1px solid var(--line);
+      padding-top: 25px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .checkout-button {
+      width: 100%;
+      background: var(--accent);
+      color: var(--white);
+      border: 0;
+      padding: 16px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+    }
+
+    .checkout-note {
+      color: var(--muted);
+      font-size: 11px;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .logo-text {
+        font-size: 18px;
+      }
+
+      .brand-logo {
+        padding: 22px 0;
+      }
+
+      .brand-logo img {
+        width: min(330px, 90%);
+      }
+
+      .hero {
+        min-height: 580px;
+      }
+
+      .hero-content {
+        padding: 75px 0;
+      }
+
+      h1 {
+        font-size: clamp(52px, 15vw, 90px);
+        letter-spacing: -3px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .section-heading {
+        display: block;
+        margin-bottom: 35px;
+      }
+
+      .section-intro {
+        margin-top: 25px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .product-visual {
+        height: 280px;
+      }
+
+      .history-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-inner {
+        display: block;
+      }
+
+      .footer-inner div + div {
+        margin-top: 12px;
+      }
+
+      .cart {
+        padding: 25px;
+      }
+
+      .ticker-inner {
+        justify-content: flex-start;
+        width: max-content;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="header">
+    <div class="container">
+      <div class="header-inner">
+
+        <a href="#" class="logo-text">
+          Bête du Gévaudan
+        </a>
+
+        <nav class="nav">
+          <a href="#collection">Коллекция</a>
+          <a href="#history">История</a>
+          <a href="#information">Информация</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="bag-button" id="openCart">
+            Корзина (<span id="cartCount">0</span>)
+          </button>
+
+          <button class="menu-button" id="menuButton">
+            Меню
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav">
+        <a href="#collection">Коллекция</a>
+        <a href="#history">История</a>
+        <a href="#information">Информация</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BRAND LOGO -->
+
+  <section class="brand-logo">
+    <div class="container">
+      <img
+        src="logo.png"
+        alt="Bête du Gévaudan"
+      />
+    </div>
+  </section>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="eyebrow">
+            Коллекция 001 / Россия / 2026
+          </div>
+
+          <h1>
+            Одежда<br />
+            с характером.
+          </h1>
+
+          <p class="hero-description">
+            Bête du Gévaudan — нишевый бренд одежды,
+            вдохновлённый французскими легендами,
+            тёмной эстетикой и вниманием к деталям.
+          </p>
+
+          <a href="#collection" class="hero-link">
+            Смотреть коллекцию →
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TICKER -->
+
+    <div class="ticker">
+      <div class="container">
+        <div class="ticker-inner">
+          <span>Коллекция 001</span>
+          <span>Ограниченный выпуск</span>
+          <span>Создано с вниманием к деталям</span>
+          <span>Bête du Gévaudan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLECTION -->
+
+    <section class="section" id="collection">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">01 / Коллекция</div>
+
+            <h2>
+              Избранные<br />
+              позиции.
+            </h2>
+          </div>
+
+          <p class="section-intro">
+            Четыре базовые модели для тех,
+            кто предпочитает выразительный
+            силуэт и сдержанную графику.
+          </p>
+        </div>
+
+        <div class="products">
+
+          <!-- PRODUCT 1 -->
+
+          <article class="product">
+            <div class="product-visual"></div>
+
+            <div class="product-meta">
+              <div>
+                <div class="product-name">
+                  Hunt Tee
+                </div>
+
+                <div class="product-description">
+                  Футболка свободного кроя
+                </div>
+              </div>
+
+              <div class="product-price">
+                4 900 ₽
+              </div>
+            </div>
+
+            <div class="product-controls">
+              <select class="size-select" aria-label="Размер Hunt Tee">
+                <option value="S">Размер S</option>
+                <option value="M" selected>Размер M</option>
+                <option value="L">Размер L</option>
+                <option value="XL">Размер XL</option>
+              </select>
+
+              <button
+                class="add-button"
+                data-name="Hunt Tee"
+                data-price="4900"
+              >
+                Добавить
+              </button>
+            </div>
+          </article>
+
+          <!-- PRODUCT 2 -->
+
+          <article class="product">
+            <div class="product-visual"></div>
+
+            <div class="product-meta">
+              <div>
+                <div class="product-name">
+                  Sign Tee
+                </div>
+
+                <div class="product-description">
+                  Минималистичная графика
+                </div>
+              </div>
+
+              <div class="product-price">
+                4 900 ₽
+              </div>
+            </div>
+
+            <div class="product-controls">
+              <select class="size-select" aria-label="Размер Sign Tee">
+                <option value="S">Размер S</option>
+                <option value="M" selected>Размер M</option>
+                <option value="L">Размер L</option>
+                <option value="XL">Размер XL</option>
+              </select>
+
+              <button
+                class="add-button"
+                data-name="Sign Tee"
+                data-price="4900"
+              >
+                Добавить
+              </button>
+            </div>
+          </article>
+
+          <!-- PRODUCT 3 -->
+
+          <article class="product">
+            <div class="product-visual"></div>
+
+            <div class="product-meta">
+              <div>
+                <div class="product-name">
+                  Trace Tee
+                </div>
+
+                <div class="product-description">
+                  Лаконичный передний принт
+                </div>
+              </div>
+
+              <div class="product-price">
+                4 900 ₽
+              </div>
+            </div>
+
+            <div class="product-controls">
+              <select class="size-select" aria-label="Размер Trace Tee">
+                <option value="S">Размер S</option>
+                <option value="M" selected>Размер M</option>
+                <option value="L">Размер L</option>
+                <option value="XL">Размер XL</option>
+              </select>
+
+              <button
+                class="add-button"
+                data-name="Trace Tee"
+                data-price="4900"
+              >
+                Добавить
+              </button>
+            </div>
+          </article>
+
+          <!-- PRODUCT 4 -->
+
+          <article class="product">
+            <div class="product-visual"></div>
+
+            <div class="product-meta">
+              <div>
+                <div class="product-name">
+                  Gévaudan Tee
+                </div>
+
+                <div class="product-description">
+                  Основная модель коллекции
+                </div>
+              </div>
+
+              <div class="product-price">
+                4 900 ₽
+              </div>
+            </div>
+
+            <div class="product-controls">
+              <select class="size-select" aria-label="Размер Gévaudan Tee">
+                <option value="S">Размер S</option>
+                <option value="M" selected>Размер M</option>
+                <option value="L">Размер L</option>
+                <option value="XL">Размер XL</option>
+              </select>
+
+              <button
+                class="add-button"
+                data-name="Gévaudan Tee"
+                data-price="4900"
+              >
+                Добавить
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORY -->
+
+    <section class="section" id="history">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">02 / История</div>
+
+            <h2>
+              О бренде.
+            </h2>
+          </div>
+        </div>
+
+        <div class="history-grid">
+
+          <p class="history-text">
+            Мы создаём одежду, которая
+            не требует громких объяснений.
+          </p>
+
+          <p class="history-description">
+            Bête du Gévaudan обращается к французским
+            легендам, старым символам и атмосфере
+            неизвестного. Мы соединяем спокойный
+            силуэт, качественные материалы и
+            выразительную графику.
+
+            <br /><br />
+
+            Каждая коллекция — это отдельная глава,
+            построенная вокруг идеи, а не тренда.
+          </p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMATION -->
+
+    <section class="section" id="information">
+      <div class="container">
+
+        <div class="section-heading">
+          <div>
+            <div class="section-number">03 / Информация</div>
+
+            <h2>
+              Всё<br />
+              необходимое.
+            </h2>
+          </div>
+
+          <p class="section-intro">
+            Информация о размерах, заказах,
+            материалах и доставке.
+          </p>
+        </div>
+
+        <div class="information-list">
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Размерная сетка</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              S — небольшой размер<br />
+              M — средний размер<br />
+              L — увеличенный размер<br />
+              XL — свободная посадка
+
+              <br /><br />
+
+              Если вы сомневаетесь между двумя размерами,
+              напишите нам в Telegram.
+            </div>
+          </div>
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Оформление заказа</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              Добавьте понравившиеся товары в корзину,
+              выберите размеры и нажмите
+              «Оформить заказ через Telegram».
+
+              <br /><br />
+
+              После этого свяжитесь с нами для
+              подтверждения наличия, доставки и оплаты.
+            </div>
+          </div>
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Доставка</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              Доставка рассчитывается индивидуально
+              в зависимости от города и способа отправки.
+
+              <br /><br />
+
+              Все детали согласовываются в Telegram
+              перед оплатой.
+            </div>
+          </div>
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Возврат и обмен</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              Условия возврата и обмена согласовываются
+              до оформления заказа.
+
+              <br /><br />
+
+              Перед покупкой уточните доступность
+              нужного размера.
+            </div>
+          </div>
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Материалы и уход</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              Рекомендуется бережная стирка при низкой
+              температуре, вывернув изделие наизнанку.
+
+              <br /><br />
+
+              Не используйте агрессивные отбеливатели.
+              Точные сведения о составе будут указаны
+              на странице конкретного изделия.
+            </div>
+          </div>
+
+          <div class="information-item">
+            <button class="information-button">
+              <span>Контакты</span>
+              <span>+</span>
+            </button>
+
+            <div class="information-content">
+              Telegram для оформления заказа:
+
+              <br /><br />
+
+              <a
+                href="https://t.me/andreihelpp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @andreihelpp
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          Bête du Gévaudan © 2026
+        </div>
+
+        <div>
+          Одежда с характером
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART -->
+
+  <div class="cart-panel" id="cartPanel">
+
+    <aside class="cart">
+
+      <div class="cart-header">
+        <div class="cart-title">
+          Корзина
+        </div>
+
+        <button class="close-cart" id="closeCart">
+          ×
+        </button>
+      </div>
+
+      <div class="cart-items" id="cartItems">
+        <p class="cart-empty">
+          Корзина пока пуста.
+        </p>
+      </div>
+
+      <div class="cart-footer">
+
+        <div class="cart-total">
+          <span>Итого</span>
+          <strong id="cartTotal">0 ₽</strong>
+        </div>
+
+        <button class="checkout-button" id="checkoutButton">
+          Оформить заказ через Telegram
+        </button>
+
+        <p class="checkout-note">
+          После нажатия откроется Telegram.
+          Скопируйте сформированный текст заказа
+          и отправьте его в чат @andreihelpp.
+        </p>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+  <script>
+    const cart = [];
+
+    const cartPanel = document.getElementById("cartPanel");
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    const openCartButton = document.getElementById("openCart");
+    const closeCartButton = document.getElementById("closeCart");
+    const checkoutButton = document.getElementById("checkoutButton");
+
+    const menuButton = document.getElementById("menuButton");
+    const mobileNav = document.getElementById("mobileNav");
+
+    function formatPrice(price) {
+      return new Intl.NumberFormat("ru-RU").format(price) + " ₽";
+    }
+
+    function updateCart() {
+      cartCount.textContent = cart.length;
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = `
+          <p class="cart-empty">
+            Корзина пока пуста.
+          </p>
+        `;
+
+        cartTotal.textContent = "0 ₽";
+        return;
+      }
+
+      cartItems.innerHTML = cart
+        .map((item, index) => {
+          return `
+            <div class="cart-item">
+              <div>
+                <strong>${item.name}</strong>
+
+                <small>
+                  Размер: ${item.size}
+                </small>
+
+                <small>
+                  ${formatPrice(item.price)}
+                </small>
+
+                <button
+                  class="remove-item"
+                  data-index="${index}"
+                >
+                  Удалить
+                </button>
+              </div>
+
+              <div>
+                ${formatPrice(item.price)}
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price,
+        0
+      );
+
+      cartTotal.textContent = formatPrice(total);
+
+      document.querySelectorAll(".remove-item").forEach((button) => {
+        button.addEventListener("click", () => {
+          const index = Number(button.dataset.index);
+
+          cart.splice(index, 1);
+
+          updateCart();
+        });
+      });
+    }
+
+    /* ADD TO CART */
+
+    document.querySelectorAll(".add-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const product = button.closest(".product");
+        const size = product.querySelector(".size-select").value;
+
+        cart.push({
+          name: button.dataset.name,
+          price: Number(button.dataset.price),
+          size: size
+        });
+
+        updateCart();
+
+        cartPanel.classList.add("active");
+      });
+    });
+
+    /* OPEN AND CLOSE CART */
+
+    openCartButton.addEventListener("click", () => {
+      cartPanel.classList.add("active");
+    });
+
+    closeCartButton.addEventListener("click", () => {
+      cartPanel.classList.remove("active");
+    });
+
+    cartPanel.addEventListener("click", (event) => {
+      if (event.target === cartPanel) {
+        cartPanel.classList.remove("active");
+      }
+    });
+
+    /* TELEGRAM CHECKOUT */
+
+    checkoutButton.addEventListener("click", () => {
+      if (cart.length === 0) {
+        alert("Сначала добавьте товар в корзину.");
+        return;
+      }
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price,
+        0
+      );
+
+      const orderText = [
+        "Здравствуйте! Хочу оформить заказ Bête du Gévaudan.",
+        "",
+        "Мой заказ:",
+        ...cart.map((item, index) => {
+          return `${index + 1}. ${item.name} — размер ${item.size} — ${formatPrice(item.price)}`;
+        }),
+        "",
+        `Итого: ${formatPrice(total)}`,
+        "",
+        "Город доставки: ",
+        "Имя: ",
+        "Контакт для связи: "
+      ].join("\n");
+
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(orderText)
+          .then(() => {
+            alert(
+              "Текст заказа скопирован. Сейчас откроется Telegram. Вставьте сообщение в чат и отправьте его."
+            );
+
+            window.open(
+              "https://t.me/andreihelpp",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          })
+          .catch(() => {
+            alert(
+              "Не удалось скопировать текст автоматически. Откройте Telegram и напишите нам вручную."
+            );
+
+            window.open(
+              "https://t.me/andreihelpp",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          });
+      } else {
+        alert(
+          "Откройте Telegram и напишите нам для оформления заказа."
+        );
+
+        window.open(
+          "https://t.me/andreihelpp",
+          "_blank",
+          "noopener,noreferrer"
+        );
+      }
+    });
+
+    /* INFORMATION ACCORDIONS */
+
+    document.querySelectorAll(".information-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".information-item");
+        const isActive = item.classList.contains("active");
+
+        document.querySelectorAll(".information-item").forEach((otherItem) => {
+          otherItem.classList.remove("active");
+
+          otherItem.querySelector(
+            ".information-button span:last-child"
+          ).textContent = "+";
+        });
+
+        if (!isActive) {
+          item.classList.add("active");
+
+          button.querySelector(
+            "span:last-child"
+          ).textContent = "−";
+        }
+      });
+    });
+
+    /* MOBILE MENU */
+
+    menuButton.addEventListener("click", () => {
+      mobileNav.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".mobile-nav a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileNav.classList.remove("active");
+      });
+    });
+
+    updateCart();
+  </script>
+
+</body>
+</html>
